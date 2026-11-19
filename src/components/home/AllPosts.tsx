@@ -1,16 +1,18 @@
 'use client';
 
+import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import PostListItem from '@/components/posts/PostListItem';
 import type { PostSummary } from '@/lib/posts';
 
 type AllPostsProps = {
   posts: PostSummary[];
+  showAllPostsLink?: boolean;
 };
 
 const POSTS_PER_PAGE = 6;
 
-export default function AllPosts({ posts }: AllPostsProps) {
+export default function AllPosts({ posts, showAllPostsLink = false }: AllPostsProps) {
   const [selectedCategory, setSelectedCategory] = useState('전체');
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -44,9 +46,25 @@ export default function AllPosts({ posts }: AllPostsProps) {
   return (
     <section id="posts" className="py-16">
       <div className="site-container">
-        <p className="text-sm font-bold tracking-[0.12em] text-brand-blue">ALL POSTS</p>
+        <div className="flex items-end justify-between gap-6">
+          <div>
+            <p className="text-sm font-bold tracking-[0.12em] text-brand-blue">ALL POSTS</p>
 
-        <h2 className="mt-2 text-[36px] font-bold tracking-[-0.03em] text-text-primary">전체 글</h2>
+            <h2 className="mt-2 text-[36px] font-bold tracking-[-0.03em] text-text-primary">
+              전체 글
+            </h2>
+          </div>
+
+          {showAllPostsLink && (
+            <Link
+              href="/posts"
+              data-node-id="91:348"
+              className="mb-1 text-[16px] leading-[27px] font-[var(--font-noto-sans-kr)] font-medium tracking-[-0.2px] whitespace-pre text-[#2477c9] transition-opacity hover:opacity-70"
+            >
+              {'전체 글 보기  →'}
+            </Link>
+          )}
+        </div>
 
         <div className="mt-8 grid grid-cols-[264px_1fr] items-start gap-6">
           <aside>

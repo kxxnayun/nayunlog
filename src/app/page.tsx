@@ -12,7 +12,7 @@ export default async function Home() {
       <hr className="section-divider" />
       <RecentPosts posts={posts.slice(0, 3)} />
       <hr className="section-divider" />
-      <AllPosts posts={posts} />
+      <AllPosts posts={posts} showAllPostsLink />
       <hr className="section-divider" />
     </>
   );
