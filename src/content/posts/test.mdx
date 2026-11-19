@@ -1,0 +1,45 @@
+export const metadata = {
+  title: 'TEST POST',
+  description: 'MDX 게시글 화면을 확인하기 위한 테스트입니다.',
+  date: '2026.11.19',
+  category: 'TEST',
+  tags: ['TEST', 'MDX'],
+  cover: '',
+  toc: [
+    {
+      id: 'test1',
+      title: 'TEST 1',
+    },
+    {
+      id: 'test2',
+      title: 'TEST 2',
+    },
+    {
+      id: 'test3',
+      title: 'TEST 3',
+    },
+  ],
+};
+
+테스트 본문입니다. MDX 게시글의 기본 문단 스타일을 확인합니다.
+
+<PostHeading id="test1">TEST 1</PostHeading>
+
+첫 번째 테스트 문단입니다. 제목과 본문 사이의 간격을 확인합니다.
+
+<Callout>포인트 박스 테스트 내용입니다.</Callout>
+
+<PostHeading id="test2">TEST 2</PostHeading>
+
+두 번째 테스트 문단입니다. 코드 블록의 크기와 여백을 확인합니다.
+
+<CodeBlock
+  language="tsx"
+  code={`export default function Test() {
+  return <div>TEST</div>;
+}`}
+/>
+
+<PostHeading id="test3">TEST 3</PostHeading>
+
+세 번째 테스트 문단입니다. 마지막 본문 영역의 간격을 확인합니다.

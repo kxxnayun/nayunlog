@@ -10,7 +10,9 @@ export default function Callout({ title = 'POINT', children }: CalloutProps) {
     <aside className="rounded-[16px] border-l-4 border-brand-blue bg-brand-sky-light px-6 py-6">
       <p className="text-xs font-bold text-brand-blue">{title}</p>
 
-      <div className="mt-3 text-base leading-7 text-text-primary">{children}</div>
+      <div className="mt-3 text-base leading-7 text-text-primary [&>p]:mt-0 [&>p]:leading-7 [&>p]:text-text-primary">
+        {children}
+      </div>
     </aside>
   );
 }
