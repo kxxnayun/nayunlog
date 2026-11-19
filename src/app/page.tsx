@@ -1,7 +1,10 @@
+import HeroSection from '@/components/home/HeroSection';
+
 export default function Home() {
   return (
-    <main>
-      <h1>nayunlong</h1>
-    </main>
+    <>
+      <HeroSection />
+      <hr className="section-divider" />
+    </>
   );
 }
