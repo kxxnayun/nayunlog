@@ -25,6 +25,10 @@ export type NavigationPost = {
   href: string;
 };
 
+export type PostSummary = PostMetadata & {
+  slug: string;
+};
+
 const postsDirectory = join(process.cwd(), 'src/content/posts');
 
 export function getPostSlugs() {
@@ -39,24 +43,27 @@ export async function getPost(slug: string) {
   return (await import(`@/content/posts/${slug}.mdx`)) as PostModule;
 }
 
-export async function getPostNavigation(slug: string) {
+export async function getAllPosts(): Promise<PostSummary[]> {
   const posts = await Promise.all(
-    getPostSlugs().map(async (postSlug) => {
-      const post = await getPost(postSlug);
+    getPostSlugs().map(async (slug) => {
+      const post = await getPost(slug);
 
       if (!post) return null;
 
       return {
-        slug: postSlug,
-        title: post.metadata.title,
-        date: post.metadata.date,
+        slug,
+        ...post.metadata,
       };
     }),
   );
 
-  const sortedPosts = posts
-    .filter((post): post is NonNullable<typeof post> => post !== null)
+  return posts
+    .filter((post): post is PostSummary => post !== null)
     .sort((a, b) => b.date.localeCompare(a.date));
+}
+
+export async function getPostNavigation(slug: string) {
+  const sortedPosts = await getAllPosts();
   const currentIndex = sortedPosts.findIndex((post) => post.slug === slug);
 
   if (currentIndex === -1) {

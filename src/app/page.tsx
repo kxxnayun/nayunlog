@@ -1,15 +1,18 @@
 import AllPosts from '@/components/home/AllPosts';
 import HeroSection from '@/components/home/HeroSection';
 import RecentPosts from '@/components/home/RecentPosts';
+import { getAllPosts } from '@/lib/posts';
 
-export default function Home() {
+export default async function Home() {
+  const posts = await getAllPosts();
+
   return (
     <>
       <HeroSection />
       <hr className="section-divider" />
-      <RecentPosts />
+      <RecentPosts posts={posts.slice(0, 3)} />
       <hr className="section-divider" />
-      <AllPosts />
+      <AllPosts posts={posts} />
       <hr className="section-divider" />
     </>
   );

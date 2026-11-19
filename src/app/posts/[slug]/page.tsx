@@ -54,16 +54,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
       <hr className="section-divider" />
 
-      <Comments
-        comments={[
-          {
-            id: 1,
-            author: '김개발',
-            content: '정리해 주신 내용 덕분에 App Router의 구조를 이해하는 데 도움이 됐어요.',
-            date: '2026.11.19',
-          },
-        ]}
-      />
+      <Comments comments={[]} />
     </>
   );
 }
