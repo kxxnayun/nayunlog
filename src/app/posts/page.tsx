@@ -4,5 +4,5 @@ import { getAllPosts } from '@/lib/posts';
 export default async function PostsPage() {
   const posts = await getAllPosts();
 
-  return <AllPosts posts={posts} />;
+  return <AllPosts posts={posts} showHomeLink />;
 }

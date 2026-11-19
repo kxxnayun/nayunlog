@@ -1,18 +1,24 @@
 'use client';
 
-import Link from 'next/link';
 import { useMemo, useState } from 'react';
+import EditorialLink from '@/components/common/EditorialLink';
+import Breadcrumbs from '@/components/layout/Breadcrumbs';
 import PostListItem from '@/components/posts/PostListItem';
 import type { PostSummary } from '@/lib/posts';
 
 type AllPostsProps = {
   posts: PostSummary[];
   showAllPostsLink?: boolean;
+  showHomeLink?: boolean;
 };
 
 const POSTS_PER_PAGE = 6;
 
-export default function AllPosts({ posts, showAllPostsLink = false }: AllPostsProps) {
+export default function AllPosts({
+  posts,
+  showAllPostsLink = false,
+  showHomeLink = false,
+}: AllPostsProps) {
   const [selectedCategory, setSelectedCategory] = useState('전체');
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -46,6 +52,10 @@ export default function AllPosts({ posts, showAllPostsLink = false }: AllPostsPr
   return (
     <section id="posts" className="py-16">
       <div className="site-container">
+        {showHomeLink && (
+          <Breadcrumbs items={[{ label: 'HOME', href: '/' }, { label: 'ALL POSTS' }]} />
+        )}
+
         <div className="flex items-end justify-between gap-6">
           <div>
             <p className="text-sm font-bold tracking-[0.12em] text-brand-blue">ALL POSTS</p>
@@ -56,13 +66,9 @@ export default function AllPosts({ posts, showAllPostsLink = false }: AllPostsPr
           </div>
 
           {showAllPostsLink && (
-            <Link
-              href="/posts"
-              data-node-id="91:348"
-              className="mb-1 text-[16px] leading-[27px] font-[var(--font-noto-sans-kr)] font-medium tracking-[-0.2px] whitespace-pre text-[#2477c9] transition-opacity hover:opacity-70"
-            >
-              {'전체 글 보기  →'}
-            </Link>
+            <EditorialLink href="/posts" dataNodeId="91:348" className="mb-1">
+              {'ALL POSTS  →'}
+            </EditorialLink>
           )}
         </div>
 

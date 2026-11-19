@@ -1,3 +1,5 @@
+import Breadcrumbs from '@/components/layout/Breadcrumbs';
+
 type PostHeaderProps = {
   category: string;
   title: string;
@@ -9,6 +11,16 @@ type PostHeaderProps = {
 export default function PostHeader({ category, title, description, tags, date }: PostHeaderProps) {
   return (
     <section className="py-16">
+      <div className="site-container">
+        <Breadcrumbs
+          items={[
+            { label: 'HOME', href: '/' },
+            { label: 'ALL POSTS', href: '/posts' },
+            { label: title },
+          ]}
+        />
+      </div>
+
       <div className="mx-auto w-full max-w-[880px] text-center">
         <p className="text-sm font-bold tracking-wide text-brand-coral">{category}</p>
 

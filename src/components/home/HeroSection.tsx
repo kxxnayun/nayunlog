@@ -1,3 +1,5 @@
+import EditorialLink from '@/components/common/EditorialLink';
+
 export default function HeroSection() {
   return (
     <section className="site-container flex min-h-[302px] items-center justify-between py-16">
@@ -15,6 +17,20 @@ export default function HeroSection() {
           <br />
           어제보다 나은 내일을 만듭니다.
         </h1>
+
+        <div className="mt-10 flex items-center gap-8">
+          <EditorialLink href="/posts" dataNodeId="102:357">
+            {'EXPLORE POSTS  ↘'}
+          </EditorialLink>
+
+          <EditorialLink href="https://github.com/kxxnayun" external>
+            {'GITHUB  ↗'}
+          </EditorialLink>
+
+          <EditorialLink href="https://www.linkedin.com/in/kxxnayun" external>
+            {'LINKEDIN  ↗'}
+          </EditorialLink>
+        </div>
       </div>
 
       <div className="relative h-[190px] w-[400px]" aria-hidden="true">
